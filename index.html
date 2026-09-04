@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aryan Branch — Diploma CSE student at RITM Forbesganj. Personal portfolio website.">
+<title>Aryan Branch | Diploma CSE | RITM Forbesganj</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+
+:root{
+  --bg:#07111f;
+  --bg2:#0b1729;
+  --card:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.13);
+  --text:#f7fbff;
+  --muted:#aab8ca;
+  --accent:#5ee7ff;
+  --accent2:#8b5cf6;
+  --shadow:0 25px 80px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 15%,rgba(94,231,255,.13),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(139,92,246,.14),transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  min-height:100vh;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+
+/* Intro */
+#intro{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  background:#050b14;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{text-align:center;animation:introUp 1s ease both}
+.intro-logo{
+  width:150px;height:150px;object-fit:cover;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,.9);
+  box-shadow:0 0 0 10px rgba(94,231,255,.08),0 20px 70px rgba(0,0,0,.55);
+  animation:float 3s ease-in-out infinite;
+}
+.intro-title{
+  margin-top:22px;font:800 clamp(30px,6vw,58px) Poppins,sans-serif;
+  letter-spacing:-2px;
+}
+.intro-sub{color:var(--muted);margin-top:8px;font-size:15px}
+.loader{
+  width:150px;height:3px;background:#1c2b3e;border-radius:20px;
+  margin:25px auto 0;overflow:hidden
+}
+.loader span{display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));animation:load 1.3s infinite}
+
+@keyframes introUp{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes load{from{transform:translateX(-120%)}to{transform:translateX(380%)}}
+
+/* Header */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:rgba(5,11,20,.62);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.07)
+}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.brand span{font-family:Poppins,sans-serif}
+.navlinks{display:flex;gap:26px;color:#c9d5e3;font-size:14px;font-weight:600}
+.navlinks a{transition:.25s}
+.navlinks a:hover{color:var(--accent)}
+.menu{display:none;background:none;border:1px solid var(--border);color:#fff;border-radius:10px;padding:8px 11px;font-size:20px}
+
+/* Hero */
+.hero{min-height:100vh;padding:140px 0 80px;display:grid;place-items:center}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:70px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(94,231,255,.22);background:rgba(94,231,255,.07);
+  padding:9px 14px;border-radius:999px;color:#c9f8ff;font-size:13px;font-weight:700
+}
+.badge i{width:7px;height:7px;border-radius:50%;background:#59e391;box-shadow:0 0 12px #59e391}
+h1{font:800 clamp(48px,7vw,82px)/.98 Poppins,sans-serif;letter-spacing:-4px;margin:22px 0}
+.gradient{background:linear-gradient(90deg,#fff,var(--accent),#b9a4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:17px;line-height:1.8;max-width:650px}
+.buttons{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.btn{
+  padding:13px 19px;border-radius:12px;border:1px solid var(--border);
+  background:var(--card);font-weight:700;transition:.25s
+}
+.btn.primary{background:linear-gradient(135deg,var(--accent),#8bc7ff);color:#06101b;border:0}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.hero-card{
+  position:relative;display:flex;justify-content:center;
+}
+.profile-wrap{
+  width:min(390px,82vw);aspect-ratio:4/5;padding:10px;
+  border-radius:34px;background:linear-gradient(145deg,rgba(94,231,255,.55),rgba(139,92,246,.35),rgba(255,255,255,.08));
+  box-shadow:var(--shadow);transform:rotate(2deg)
+}
+.profile{
+  width:100%;height:100%;object-fit:cover;border-radius:27px;display:block;
+  filter:saturate(1.08) contrast(1.02)
+}
+.floating{
+  position:absolute;bottom:25px;left:0;
+  background:rgba(8,17,31,.82);border:1px solid var(--border);
+  backdrop-filter:blur(15px);padding:15px 18px;border-radius:16px;
+  box-shadow:var(--shadow)
+}
+.floating strong{display:block;font-size:14px}.floating span{font-size:12px;color:var(--muted)}
+
+/* Sections */
+section{padding:100px 0}
+.section-head{margin-bottom:35px}
+.kicker{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800}
+.section-head h2{font:700 clamp(30px,4vw,46px) Poppins,sans-serif;letter-spacing:-1.5px;margin-top:8px}
+.section-head p{color:var(--muted);margin-top:8px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  padding:27px;border:1px solid var(--border);border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  box-shadow:0 15px 50px rgba(0,0,0,.12);
+  transition:.3s
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(94,231,255,.35)}
+.icon{font-size:30px;margin-bottom:18px}
+.card h3{font:700 20px Poppins,sans-serif;margin-bottom:8px}
+.card p{color:var(--muted);line-height:1.7;font-size:14px}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;align-items:stretch}
+.about-photo{border-radius:25px;overflow:hidden;border:1px solid var(--border);min-height:440px}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.info-list{display:grid;gap:13px;margin-top:22px}
+.info{
+  display:flex;justify-content:space-between;gap:20px;
+  padding:15px 0;border-bottom:1px solid rgba(255,255,255,.08)
+}
+.info span:first-child{color:var(--muted)}.info span:last-child{font-weight:700;text-align:right}
+.skills{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.skill{padding:9px 12px;border-radius:999px;background:rgba(94,231,255,.08);border:1px solid rgba(94,231,255,.18);font-size:13px}
+.contact{
+  text-align:center;padding:65px 30px;border-radius:30px;
+  background:radial-gradient(circle at top,rgba(94,231,255,.12),transparent 55%),rgba(255,255,255,.045);
+  border:1px solid var(--border)
+}
+.contact h2{font:700 clamp(30px,5vw,50px) Poppins,sans-serif}
+.contact p{color:var(--muted);margin:12px auto 25px;max-width:600px;line-height:1.7}
+footer{padding:30px 0 45px;text-align:center;color:#7f8da0;font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* Mobile */
+@media(max-width:800px){
+  .navlinks{display:none;position:absolute;top:76px;left:0;width:100%;padding:18px 5%;background:rgba(5,11,20,.96);flex-direction:column;gap:18px;border-bottom:1px solid var(--border)}
+  .navlinks.open{display:flex}.menu{display:block}
+  .hero-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+  .hero{padding-top:120px}
+  h1{letter-spacing:-2.5px}
+  .hero-card{order:-1}
+  .profile-wrap{width:min(330px,78vw)}
+  .grid3{grid-template-columns:1fr}
+  section{padding:75px 0}
+  .about-photo{min-height:350px}
+}
+@media(max-width:430px){
+  .brand span{font-size:14px}.brand img{width:37px;height:37px}
+  .hero p{font-size:15px}.floating{left:5px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-inner">
+    <img class="intro-logo" src="aryan-profile.jpg" alt="Aryan Branch">
+    <div class="intro-title">ARYAN BRANCH</div>
+    <div class="intro-sub">Diploma CSE • RITM Forbesganj</div>
+    <div class="loader"><span></span></div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <img src="aryan-profile.jpg" alt="Aryan Branch logo">
+      <span>ARYAN BRANCH</span>
+    </a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="badge"><i></i> Diploma CSE Student</span>
+        <h1>Hi, I'm <span class="gradient">Aryan Branch.</span></h1>
+        <p>
+          Welcome to my personal website. I'm pursuing a Diploma in
+          Computer Science & Engineering at <strong>RITM Forbesganj</strong>.
+          This is my digital space to showcase my education, skills,
+          interests and journey in technology.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#about">Explore My Profile →</a>
+          <a class="btn" href="#contact">Let's Connect</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="profile-wrap">
+          <img class="profile" src="aryan-profile.jpg" alt="Aryan Branch profile photo">
+        </div>
+        <div class="floating">
+          <strong>RITM Forbesganj</strong>
+          <span>Diploma • Computer Science & Engineering</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">About Me</div>
+        <h2>A little about Aryan</h2>
+        <p>Student • Learner • Future Tech Professional</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="aryan-profile.jpg" alt="Aryan Branch">
+        </div>
+        <div class="card reveal">
+          <div class="icon">👨‍💻</div>
+          <h3>My Journey</h3>
+          <p>
+            I'm Aryan Branch, a Diploma Computer Science & Engineering student.
+            I enjoy learning about computers, coding, web development and
+            modern technology. My goal is to keep improving my skills and
+            build useful digital projects.
+          </p>
+
+          <div class="info-list">
+            <div class="info"><span>Name</span><span>Aryan Branch</span></div>
+            <div class="info"><span>Course</span><span>Diploma CSE</span></div>
+            <div class="info"><span>College</span><span>RITM Forbesganj</span></div>
+            <div class="info"><span>Focus</span><span>Computer Science & Web Development</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Education</div>
+        <h2>My academic path</h2>
+        <p>Building a strong foundation in computer science.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card reveal">
+          <div class="icon">🎓</div>
+          <h3>Diploma CSE</h3>
+          <p>Computer Science & Engineering diploma program with a focus on technical and practical learning.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🏫</div>
+          <h3>RITM Forbesganj</h3>
+          <p>My college environment where I am developing my technical knowledge and professional skills.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🚀</div>
+          <h3>Future Goal</h3>
+          <p>To grow as a skilled technology professional by learning, creating projects and gaining real-world experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Skills & Interests</div>
+        <h2>Things I'm learning</h2>
+        <p>A simple starting point for my technology journey.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>My current interests</h3>
+        <p>These areas can be updated as I learn and build more projects.</p>
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Web Design</span>
+          <span class="skill">Computer Science</span>
+          <span class="skill">Programming</span>
+          <span class="skill">Problem Solving</span>
+          <span class="skill">Technology</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact reveal">
+        <div class="kicker">Contact</div>
+        <h2>Let's connect.</h2>
+        <p>
+          Want to collaborate, discuss technology, or simply say hello?
+          Add your social links or email below when you're ready.
+        </p>
+        <div class="buttons" style="justify-content:center">
+          <a class="btn primary" href="mailto:your-email@example.com">Email Me</a>
+          <a class="btn" href="#home">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Aryan Branch • Diploma CSE • RITM Forbesganj
+</footer>
+
+<script>
+  // Intro screen
+  window.addEventListener("load", () => {
+    setTimeout(() => document.getElementById("intro").classList.add("hide"), 1500);
+  });
+
+  // Mobile navigation
+  const menu = document.getElementById("menu");
+  const nav = document.getElementById("navlinks");
+  menu.addEventListener("click", () => nav.classList.toggle("open"));
+  document.querySelectorAll(".navlinks a").forEach(a =>
+    a.addEventListener("click", () => nav.classList.remove("open"))
+  );
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.12});
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
